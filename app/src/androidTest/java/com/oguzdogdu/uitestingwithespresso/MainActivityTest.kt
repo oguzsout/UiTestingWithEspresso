@@ -17,11 +17,24 @@ class MainActivityTest {
     @get:Rule
     var activityScenarioRule = androidx.test.ext.junit.rules.activityScenarioRule<MainActivity>()
 
-        //first let's check(test) if our main activity layout is displayed or is visible to
+    //first let's check(test) if our main activity layout is displayed or is visible to
 
     @Test
-    fun checkActivityVisibility(){
+    fun checkActivityVisibility() {
         onView(withId(R.id.layout_mainActivity)).check(matches(isDisplayed()))
+    }
+
+    //checking if text "Main Activity" is visible as we want
+
+    @Test
+    fun checkingTextVisibility() {
+        onView(withId(R.id.tvMain)).check(matches(isDisplayed()))
+
+        //checking if out button is visible
+
+        onView(withId(R.id.btnMain)).check(matches(isDisplayed()))
+
+
     }
 
 }
