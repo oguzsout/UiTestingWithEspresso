@@ -1,5 +1,6 @@
 package com.oguzdogdu.uitestingwithespresso
 
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -65,5 +66,33 @@ class MainActivityTest {
             .perform(click())
 
         //with click everything is alright
+        //now we will check if our second activity is visible to the user
+
+        onView(withId(R.id.layout_secondActivity))
+            .check(matches(isDisplayed()))
+    }
+
+    //testing backPress to mainActivity
+
+    @Test
+    fun backPressToMainActivity() {
+
+        onView(withId(R.id.btnMain))
+            .perform(click())
+
+        onView(withId(R.id.layout_secondActivity))
+            .check(matches(isDisplayed()))
+
+        //here we will check onBackPress
+        //when the user is on the second activity
+        Espresso.pressBack()
+
+        //after clicking on button to back
+        //main Activity must be visible
+        //we will check it
+
+        onView(withId(R.id.layout_mainActivity))
+            .check(matches(isDisplayed()))
+
     }
 }
