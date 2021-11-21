@@ -1,9 +1,9 @@
 package com.oguzdogdu.uitestingwithespresso
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Rule
 import org.junit.Test
@@ -21,20 +21,49 @@ class MainActivityTest {
 
     @Test
     fun checkActivityVisibility() {
-        onView(withId(R.id.layout_mainActivity)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.layout_mainActivity))
+            .check(
+                matches(isDisplayed())
+            )
     }
 
     //checking if text "Main Activity" is visible as we want
 
     @Test
     fun checkingTextVisibility() {
+
         onView(withId(R.id.tvMain)).check(matches(isDisplayed()))
 
         //checking if out button is visible
 
-        onView(withId(R.id.btnMain)).check(matches(isDisplayed()))
+        onView(withId(R.id.btnMain))
+            .check(
+                matches(isDisplayed())
+            )
 
 
     }
+    //checking if text in our View is the right one
 
+    @Test
+    fun testTextIsMainActivity() {
+        onView(withId(R.id.tvMain))
+            .check(
+                matches(
+                    withText(R.string.main_activity)
+                )
+            )
+    }
+
+    //testing click in button(Main Activity) if after a click we will navigate to second Activity
+    //and test if our view(second activity will be displayed)
+
+    @Test
+    fun navigate2ndActivity() {
+        onView(withId(R.id.btnMain))
+            .perform(click())
+
+        //with click everything is alright
+    }
 }
