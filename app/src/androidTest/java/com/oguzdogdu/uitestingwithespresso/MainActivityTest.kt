@@ -28,7 +28,6 @@ class MainActivityTest {
                 matches(isDisplayed())
             )
     }
-
     //checking if text "Main Activity" is visible as we want
 
     @Test
@@ -42,8 +41,6 @@ class MainActivityTest {
             .check(
                 matches(isDisplayed())
             )
-
-
     }
     //checking if text in our View is the right one
 
@@ -71,7 +68,6 @@ class MainActivityTest {
         onView(withId(R.id.layout_secondActivity))
             .check(matches(isDisplayed()))
     }
-
     //testing backPress to mainActivity
 
     @Test
@@ -93,6 +89,5 @@ class MainActivityTest {
 
         onView(withId(R.id.layout_mainActivity))
             .check(matches(isDisplayed()))
-
     }
 }
